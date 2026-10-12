@@ -18,87 +18,43 @@ class SixthActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        // Menghubungkan Kotlin dengan activity_sixth.xml
-        binding = ActivitySixthBinding.inflate(layoutInflater)
+        binding= ActivitySixthBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Mengatur tampilan layar
-        ViewCompat.setOnApplyWindowInsetsListener(
-            findViewById(R.id.main)
-        ) { v, insets ->
-            val systemBars = insets.getInsets(
-                WindowInsetsCompat.Type.systemBars()
-            )
-
-            v.setPadding(
-                systemBars.left,
-                systemBars.top,
-                systemBars.right,
-                systemBars.bottom
-            )
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+            setSupportActionBar(binding.toolbar)
+            supportActionBar?.apply {
+                title = "Activity Sixth"
+                subtitle = "Penerapan Fragment"
+                setDisplayHomeAsUpEnabled(true)
+                setDisplayShowHomeEnabled(true)
+                setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+            }
 
-        // Mengatur Toolbar
-        setSupportActionBar(binding.toolbar)
+            replaceFragment(SatuFragment(), addToBackStack = false)
 
-        supportActionBar?.apply {
-            title = "MindCare"
-            subtitle = "Kesehatan Mental dan Kesejahteraan"
-
-            setDisplayHomeAsUpEnabled(true)
-            setDisplayShowHomeEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_arrow_back)
+            binding.btnFragment1.setOnClickListener { replaceFragment(SatuFragment()) }
+            binding.btnFragment2.setOnClickListener { replaceFragment(DuaFragment()) }
+            binding.btnFragment3.setOnClickListener { replaceFragment(TigaFragment()) }
         }
 
-        // Menampilkan Fragment pertama saat halaman dibuka
-        if (savedInstanceState == null) {
-            replaceFragment(
-                SatuFragment(),
-                addToBackStack = false
-            )
-        }
 
-        // Tombol Fragment 1
-        binding.btnFragment1.setOnClickListener {
-            replaceFragment(SatuFragment())
-        }
-
-        // Tombol Fragment 2
-        binding.btnFragment2.setOnClickListener {
-            replaceFragment(DuaFragment())
-        }
-
-        // Tombol Fragment 3
-        binding.btnFragment3.setOnClickListener {
-            replaceFragment(TigaFragment())
-        }
-    }
-
-    // Fungsi untuk mengganti Fragment
-    private fun replaceFragment(
-        fragment: Fragment,
-        addToBackStack: Boolean = true
-    ) {
-        val transaction = supportFragmentManager
-            .beginTransaction()
+    private fun replaceFragment(fragment: Fragment, addToBackStack: Boolean = true) {
+        val transaction = supportFragmentManager.beginTransaction()
             .replace(binding.fragmentContainer.id, fragment)
-
-        if (addToBackStack) {
-            transaction.addToBackStack(null)
-        }
-
+        if (addToBackStack) transaction.addToBackStack(null)
         transaction.commit()
     }
-
-    // Mengatur tombol kembali pada Toolbar
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             android.R.id.home -> {
                 onBackPressedDispatcher.onBackPressed()
                 true
             }
-
             else -> super.onOptionsItemSelected(item)
         }
     }

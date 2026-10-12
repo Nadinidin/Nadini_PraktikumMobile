@@ -1,13 +1,14 @@
-
 package com.example.nadini_3tib
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.nadini_3tib.databinding.ActivityLoginBinding
 import com.example.nadini_3tib.databinding.ActivityMainBinding
 import com.example.nadini_3tib.pertemuan5.LimaActivity
 import com.example.nadini_3tib.pertemuan6.SixthActivity
@@ -25,112 +26,66 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        ViewCompat.setOnApplyWindowInsetsListener(
-            findViewById(R.id.main)
-        ) { v, insets ->
-            val systemBars = insets.getInsets(
-                WindowInsetsCompat.Type.systemBars()
-            )
-            v.setPadding(
-                systemBars.left,
-                systemBars.top,
-                systemBars.right,
-                systemBars.bottom
-            )
+
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
+            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-
-        // Mengambil data SharedPreferences
         val sharedPref = getSharedPreferences("user_pref", MODE_PRIVATE)
+        val user = intent.getStringExtra("username")
+        val pass = intent.getStringExtra("password")
+        val umur = intent.getIntExtra("umur",0)
 
-        val user = sharedPref.getString("username", "Pengguna") ?: "Pengguna"
+        Log.i("Hasil", "Umur $umur")
 
-        // Menampilkan username
         binding.txtUsername.text = user
+        binding.txtPassword.setText(pass)
 
-        // Password tidak ditampilkan untuk menjaga privasi
-        binding.txtPassword.text = "••••••"
-
-        // Tombol Snackbar
         binding.btnSnackBar.setOnClickListener {
-            Snackbar.make(
-                binding.root,
-                "Item dihapus",
-                Snackbar.LENGTH_LONG
-            )
+            Snackbar.make(binding.root, "Item dihapus",
+                Snackbar.LENGTH_LONG)
                 .setAction("BATAL") {
-                    Snackbar.make(
-                        binding.root,
-                        "Penghapusan dibatalkan",
-                        Snackbar.LENGTH_SHORT
-                    ).show()
+
                 }
                 .show()
         }
-
-        // Tombol AlertDialog
         binding.btnAlertDialog.setOnClickListener {
             MaterialAlertDialogBuilder(this)
                 .setTitle("Hapus data")
-                .setMessage("Data yang dihapus tidak bisa dikembalikan.")
+                .setMessage("Data yang dihapus tidak " +
+                        "bisa dikembalikan.")
                 .setNegativeButton("Batal", null)
                 .setPositiveButton("Hapus") { dialog, _ ->
-                    // Simulasi proses hapus
+                    // proses hapus
                     dialog.dismiss()
                 }
                 .setCancelable(false)
                 .show()
         }
-
-        // Tombol kembali
         binding.btnKembali.setOnClickListener {
+
             finish()
         }
-
-        // Navigasi ke Pertemuan 5
         binding.btnToLima.setOnClickListener {
-            startActivity(
-                Intent(this, LimaActivity::class.java)
-            )
+            startActivity(Intent(this, LimaActivity::class.java))
         }
-
-        // Navigasi ke Pertemuan 6 (Fragment)
-        binding.btnToSix.setOnClickListener {
-            startActivity(
-                Intent(this, SixthActivity::class.java)
-            )
+        binding.btnToSixth.setOnClickListener {
+            startActivity(Intent(this@MainActivity, SixthActivity::class.java))
         }
-
-        // Tombol Logout
         binding.btnLogout.setOnClickListener {
             AlertDialog.Builder(this)
                 .setTitle("Logout")
                 .setMessage("Apakah Anda yakin ingin keluar?")
                 .setPositiveButton("Ya") { dialog, _ ->
-
-                    // Menghapus data login
-                    sharedPref.edit()
-                        .clear()
-                        .apply()
-
+                    val editor = sharedPref.edit()
+                    editor.clear()
+                    editor.apply()
                     dialog.dismiss()
-
-                    // Kembali ke halaman Login
-                    val intent = Intent(
-                        this,
-                        LoginActivity::class.java
-                    )
-
-                    intent.flags =
-                        Intent.FLAG_ACTIVITY_NEW_TASK or
-                                Intent.FLAG_ACTIVITY_CLEAR_TASK
-
-                    startActivity(intent)
+                    startActivity(Intent(this, LoginActivity::class.java))
                     finish()
                 }
-                .setNegativeButton("Batal") { dialog, _ ->
-                    dialog.dismiss()
-                }
+                .setNegativeButton("Batal") { dialog, _ -> dialog.dismiss() }
                 .show()
         }
     }
