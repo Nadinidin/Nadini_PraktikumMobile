@@ -4,10 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    tools:context=".pertemuan5.LimaActivity">
+    tools:context=".Home.pertemuan5.LimaActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
@@ -19,74 +19,94 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/pink"
+            android:fontFamily="@font/font1"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:subtitleTextColor="@android:color/black"
-            app:titleTextColor="@android:color/black" />
+            app:titleTextColor="@android:color/black"
+            app:layout_scrollFlags="scroll|enterAlways"
+            />
 
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
         android:padding="24dp"
-        android:clipToPadding="false"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
+        android:clipToPadding="false">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Tentang MindCare"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:fontFamily="@font/font1"
-                android:gravity="center"
-                android:layout_marginBottom="16dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="MindCare adalah aplikasi yang bertujuan membantu pengguna mengenal pentingnya kesehatan mental dan kesejahteraan diri."
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:lineSpacingExtra="6dp"
-                android:layout_marginBottom="16dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Melalui MindCare, pengguna dapat memperoleh informasi mengenai kesehatan mental, mengenal perbedaan psikolog dan psikiater, serta membaca artikel yang berkaitan dengan kesejahteraan diri."
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:lineSpacingExtra="6dp"
-                android:layout_marginBottom="16dp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Aplikasi ini juga menerapkan berbagai komponen Android seperti Toolbar, WebView, Fragment, SharedPreferences, Snackbar, dan AlertDialog sebagai bagian dari pembelajaran Pemrograman Mobile."
-                android:textSize="16sp"
-                android:textColor="@color/black"
-                android:lineSpacingExtra="6dp"
-                android:layout_marginBottom="24dp" />
-
             <Button
                 android:id="@+id/btnwebView"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/pink"
                 android:textColor="@color/black"
                 android:fontFamily="@font/font1"
                 android:textStyle="bold"
-                android:text="Buka WebView" />
+                android:text="WebView"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since 1966,
+                when designers at Letraset and James Mosley, the librarian at St Bride Printing Library
+                in London, took a 1914 Cicero translation and scrambled it to make dummy text for
+                Letraset's Body Type sheets. It has survived not only many decades, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised thanks
+                to these sheets and more recently with desktop publishing software like Aldus PageMaker
+                and Microsoft Word including versions of Lorem Ipsum."/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since 1966,
+                when designers at Letraset and James Mosley, the librarian at St Bride Printing Library
+                in London, took a 1914 Cicero translation and scrambled it to make dummy text for
+                Letraset's Body Type sheets. It has survived not only many decades, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised thanks
+                to these sheets and more recently with desktop publishing software like Aldus PageMaker
+                and Microsoft Word including versions of Lorem Ipsum."/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since 1966,
+                when designers at Letraset and James Mosley, the librarian at St Bride Printing Library
+                in London, took a 1914 Cicero translation and scrambled it to make dummy text for
+                Letraset's Body Type sheets. It has survived not only many decades, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised thanks
+                to these sheets and more recently with desktop publishing software like Aldus PageMaker
+                and Microsoft Word including versions of Lorem Ipsum."/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since 1966,
+                when designers at Letraset and James Mosley, the librarian at St Bride Printing Library
+                in London, took a 1914 Cicero translation and scrambled it to make dummy text for
+                Letraset's Body Type sheets. It has survived not only many decades, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised thanks
+                to these sheets and more recently with desktop publishing software like Aldus PageMaker
+                and Microsoft Word including versions of Lorem Ipsum."/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                Lorem Ipsum has been the industry's standard dummy text ever since 1966,
+                when designers at Letraset and James Mosley, the librarian at St Bride Printing Library
+                in London, took a 1914 Cicero translation and scrambled it to make dummy text for
+                Letraset's Body Type sheets. It has survived not only many decades, but also the leap
+                into electronic typesetting, remaining essentially unchanged. It was popularised thanks
+                to these sheets and more recently with desktop publishing software like Aldus PageMaker
+                and Microsoft Word including versions of Lorem Ipsum."/>
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
