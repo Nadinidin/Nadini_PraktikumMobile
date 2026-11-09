@@ -183,6 +183,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnToLima" />
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnToTenth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="#FAF8E3"
+            android:text="Pertemuan 10"
+            android:textColor="@color/black"
+            app:layout_columnWeight="1"
+            app:layout_gravity="fill_horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.528"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnToLima" />
+
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnToSembilan"
